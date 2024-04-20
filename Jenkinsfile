@@ -68,15 +68,11 @@ pipeline {
                 configs: 'train-schedule-kube-canary.yml',
                 enableConfigSubstitution: true
               )
-            }
-            steps {
-                input 'Deploy to Production?'
-                milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+              kubernetesDeploy(
+                kubeconfigId: 'kubeconfig',
+                configs: 'train-schedule-kube.yml',
+                enableConfigSubstitution: true
+            )
             }
         }
     }
